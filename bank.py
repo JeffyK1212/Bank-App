@@ -79,4 +79,14 @@ if "savings" not in st.session_state:
 if "current" not in st.session_state:
     st.session_state.current = CurrentAccount()
 
+# Select account type
+account_type = st.selectbox("Choose Account Type", ["Savings Account", "Current Account"])
+
+# Select action type
+action = st.radio("Choose Transaction Type", ["Deposit", "Withdraw"])
+
+# Enter amount
+amount = st.number_input("Enter amount in Naira (₦)", min_value=0, step=100)
+
+
 

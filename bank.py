@@ -102,4 +102,14 @@ if st.button("Submit Transaction"):
 
     st.success(message)
 
+# Display balances
+st.markdown("### 💰 Account Balances")
+col1, col2 = st.columns(2)
+col1.metric("Savings Account", f"₦{st.session_state.savings.balance}")
+col2.metric("Current Account", f"₦{st.session_state.current.balance}")
+
+# Display withdrawal limit
+st.markdown("### 📌 Withdrawal Limit")
+st.info(f"Savings account withdrawal limit per transaction: ₦{st.session_state.savings.withdrawal_limit}")
+
 

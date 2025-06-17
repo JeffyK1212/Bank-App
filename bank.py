@@ -113,3 +113,15 @@ st.markdown("### 📌 Withdrawal Limit")
 st.info(f"Savings account withdrawal limit per transaction: ₦{st.session_state.savings.withdrawal_limit}")
 
 
+# Show transaction history
+st.markdown("### 📜 Transaction History")
+selected_history = (
+    st.session_state.savings.get_history() if account_type == "Savings Account"
+    else st.session_state.current.get_history()
+)
+
+if selected_history:
+    for tx in reversed(selected_history):
+        st.text(str(tx))
+else:
+    st.write("No transactions yet.")

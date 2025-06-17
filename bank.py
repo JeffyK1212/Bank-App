@@ -41,5 +41,32 @@ class SavingsAccount:
     def get_history(self):
         return self.history
 
+class CurrentAccount:
+    def __init__(self, balance=0):
+        self.balance = balance
+        self.history = []
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            transaction = Transaction(amount, "Deposit")
+            self.history.append(transaction)
+            return f"✅ Deposited ₦{amount}"
+        return "❌ Invalid deposit amount"
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            return "❌ Insufficient funds"
+        elif amount <= 0:
+            return "❌ Invalid withdrawal amount"
+        else:
+            self.balance -= amount
+            transaction = Transaction(amount, "Withdraw")
+            self.history.append(transaction)
+            return f"✅ Withdrawn ₦{amount}"
+
+    def get_history(self):
+        return self.history
+
 
 

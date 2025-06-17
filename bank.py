@@ -88,5 +88,18 @@ action = st.radio("Choose Transaction Type", ["Deposit", "Withdraw"])
 # Enter amount
 amount = st.number_input("Enter amount in Naira (₦)", min_value=0, step=100)
 
+# Perform transaction
+if st.button("Submit Transaction"):
+    if account_type == "Savings Account":
+        account = st.session_state.savings
+    else:
+        account = st.session_state.current
+
+    if action == "Deposit":
+        message = account.deposit(amount)
+    else:
+        message = account.withdraw(amount)
+
+    st.success(message)
 
 

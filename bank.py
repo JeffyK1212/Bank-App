@@ -68,5 +68,15 @@ class CurrentAccount:
     def get_history(self):
         return self.history
 
+st.set_page_config(page_title="B.B.T", layout="centered")
+
+st.title("🏦 Welcome to Benevolent Bank and Trust (B.B.T)")
+st.subheader("Welcome!")
+
+# Initialize session state accounts
+if "savings" not in st.session_state:
+    st.session_state.savings = SavingsAccount()
+if "current" not in st.session_state:
+    st.session_state.current = CurrentAccount()
 
 
